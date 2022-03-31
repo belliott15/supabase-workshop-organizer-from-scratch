@@ -22,18 +22,17 @@ export async function getMember(id){
     return response.body;
 }
 
-// export async function createMember(){
-//     const response = await client
-//         .from('workshop_members')
-//         .insert({
-//             first_name: firstName, 
-//             last_name: lastName,
-//             company: company,
-//             workshop_id: workshopId
-//         });
+export async function createMember(member){
+    const response = await client
+        .from('workshop_members')
+        .insert({
+            first_name: member.firstName, 
+            last_name: member.lastName,
+            workshop_id: member.workshopId
+        });
 
-//     return response.body;
-// }
+    return response.body;
+}
 
 
 export function getUser() {

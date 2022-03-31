@@ -24,18 +24,22 @@
         <section id="new-member">
             <h2>Add A Member To A Workshop</h2>
             <form>
-                <input name="first-name" placeholder="First Name" />
-                <input name="last-name" placeholder="Last Name" />
-                <select id="workshop dropdown">
+                <input required name="first-name" placeholder="First Name" />
+                <input required name="last-name" placeholder="Last Name" />
+                <select id="workshop-dropdown" name="dropdown">
                 </select>
                 <button>Add Member</button>
             </form>
         </section>
+        <div>
+            <a href="../workshops/">Workshops</a>
+            <a href="./details">Workshop Details</a>
+        </div>
     </main>
     <footer>
         <div class="copy gutter-right">&copy; 2022 Alchemy Code Lab</div>
     </footer>
-    <script type="module" src="./workshop.js"></script>
+    <script type="module" src="./create.js"></script>
 </body>
 
 </html>
