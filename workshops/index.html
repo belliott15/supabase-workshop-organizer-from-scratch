@@ -20,13 +20,34 @@
         </div>
     </header>    
     <button id="logout">Logout</button>
-    <main>
-        <section>
+    <main id="workshop-main">
+        <section id="left-side">
+            <div>
+                <h1>Welcome to your Workshop Organizer</h1>
+            </div>
+            <div>
+                <a href="./create">Add a member</a>
+                <a href="./details">checkout our workshops</a>
+            </div>
+        </section>
+        <section id="right-side">
+            <div>
+                <button>Search</button>
+                <input id="search-bar" placeholder="search for workshop">
+            </div>
+            <div id="workshop-display">
+                <div class="workshop">
+                    <h2>Workshop Name</h2>
+                    <img src="/assets/welding.png" />
+                    <p>Members First Name</p>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
-        <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
+        <div class="copy gutter-right">&copy; 2022 Alchemy Code Lab</div>
     </footer>
-    <script type="module" src="./worshop.js"></script>
+    <script type="module" src="./workshop.js"></script>
 </body>
 
 </html>
