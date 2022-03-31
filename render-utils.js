@@ -17,7 +17,7 @@ export function renderWorkshop(workshop){
         const memberName = document.createElement('a');
 
         memberName.textContent = member.first_name;
-        memberName.href = `../edit-member/?id=${member.id}`;
+        memberName.href = `../edit/?id=${member.id}`;
 
         members.append(memberName);
     }

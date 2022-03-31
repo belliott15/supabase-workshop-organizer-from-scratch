@@ -1,7 +1,12 @@
-import { createMember, getWorkshop } from '../fetch-utils.js';
+import { createMember, getWorkshop, logout } from '../fetch-utils.js';
 
 const formEl = document.querySelector('form');
 const workshopDropdown = document.querySelector('select');
+const logoutButton = document.getElementById('logout');
+
+logoutButton.addEventListener('click', () => {
+    logout();
+});
 
 formEl.addEventListener('submit', async (e) =>{
     e.preventDefault();
