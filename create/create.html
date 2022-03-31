@@ -20,28 +20,16 @@
         </div>
     </header>    
     <button id="logout">Logout</button>
-    <main id="workshop-main">
-        <section id="left-side">
-            <div>
-                <h1>Welcome to your Workshop Organizer</h1>
-            </div>
-            <div>
-                <a href="../create/create.html">Add a member</a>
-                <a href="./details">checkout our workshops</a>
-            </div>
-        </section>
-        <section id="right-side">
-            <div>
-                <button>Search</button>
-                <input id="search-bar" placeholder="search for workshop">
-            </div>
-            <div id="workshop-display">
-                <div class="workshop">
-                    <h2>Workshop Name</h2>
-                    <img src="/assets/welding.png" />
-                    <p>Members First Name</p>
-                </div>
-            </div>
+    <main id="add-member">
+        <section id="new-member">
+            <h2>Add A Member To A Workshop</h2>
+            <form>
+                <input name="first-name" placeholder="First Name" />
+                <input name="last-name" placeholder="Last Name" />
+                <select id="workshop dropdown">
+                </select>
+                <button>Add Member</button>
+            </form>
         </section>
     </main>
     <footer>
