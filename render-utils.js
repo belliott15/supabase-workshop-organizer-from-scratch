@@ -16,12 +16,12 @@ export function renderWorkshop(workshop){
     for (let member of workshop.workshop_members) {
         const memberName = document.createElement('a');
 
-        memberName.textContent = member.name;
+        memberName.textContent = member.first_name;
         memberName.href = `../edit-member/?id=${member.id}`;
 
         members.append(memberName);
     }
-    workshopDiv.append(workshopName, workshopImg);
+    workshopDiv.append(workshopName, workshopImg, members);
     workshopDiv.classList.add('workshop');
     
     return workshopDiv;

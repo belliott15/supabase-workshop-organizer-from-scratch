@@ -16,7 +16,6 @@ formEl.addEventListener('submit', async (e) =>{
         last_name: lastName,
         workshop_id: workshopID
     };
-    console.log(workshopID);
 
     await createMember(member);
     formEl.reset();

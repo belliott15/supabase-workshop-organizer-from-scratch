@@ -26,9 +26,9 @@ export async function createMember(member){
     const response = await client
         .from('workshop_members')
         .insert({
-            first_name: member.firstName, 
-            last_name: member.lastName,
-            workshop_id: member.workshopId
+            first_name: member.first_name, 
+            last_name: member.last_name,
+            workshop_id: member.workshop_id
         });
 
     return response.body;
