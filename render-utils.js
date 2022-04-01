@@ -29,6 +29,7 @@ export function renderWorkshop(workshop){
     members.classList.add('dropzone');
     workshopDiv.append(workshopName, workshopImg, members);
     workshopDiv.classList.add('workshop');
+    workshopDiv.id = workshop.id;
     
     return workshopDiv;
 }

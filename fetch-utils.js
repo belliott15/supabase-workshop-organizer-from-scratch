@@ -5,7 +5,7 @@ const SUPABASE_URL = 'https://cpwfuaqvwlzrtpauugot.supabase.co';
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function getWorkshop(query){
-    if(!query){
+    if (!query){
         const response = await client
             .from('workshops')
             .select('*, workshop_members(*)');
@@ -51,6 +51,19 @@ export async function updateMember(id, member){
             workshop_id: member.workshop_id
         })
         .match({ id: id });
+
+    return response;
+}
+
+export async function updateDraggedMember(id, workshop){
+    console.log(id, workshop);
+    const response = await client
+        .from('workshop_members')
+        .update({
+            workshop_id: Number(workshop)
+        })
+        .match({ id })
+        .single();
 
     return response;
 }

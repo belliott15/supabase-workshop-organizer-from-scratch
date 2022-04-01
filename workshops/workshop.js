@@ -1,4 +1,4 @@
-import { checkAuth, getWorkshop, logout, updateMember } from '../fetch-utils.js';
+import { checkAuth, getWorkshop, logout, updateDraggedMember } from '../fetch-utils.js';
 import { renderWorkshop } from '../render-utils.js';
 
 const workshopEl = document.querySelector('#workshop-display');
@@ -21,6 +21,7 @@ async function fetchAndDisplayWorkshops(){
         
         const workshopList = await renderWorkshop(workshop);
         workshopEl.append(workshopList);
+        document.addEventListener('drop', drop);
     }
 }
 
@@ -66,7 +67,7 @@ document.addEventListener('dragover', (e) =>{
 
 document.addEventListener('dragenter', (e) => {
     if (e.target.className === 'dropzone'){
-        event.target.style.background = 'lightgray';
+        e.target.style.background = 'lightgray';
     }
 }, false);
 
@@ -78,18 +79,15 @@ document.addEventListener('dragleave', (e) => {
 
 document.addEventListener('drop', async (e) => {
     e.preventDefault();
-    if (e.target.className === 'dropzone') {
-        e.target.style.background = '';
-        dragged.parentNode.removeChild(dragged);
-        e.target.appendChild(dragged);
-    }
-    const elementPlace = e.path.length - 8;
-    const memberId = e.dataTransfer.getData('text');
-    const workshopID = e.path[elementPlace].id;
-    console.log(elementPlace);
-    const member = {
-        workshop_id: workshopID
-    };
 
-    await updateMember(memberId, member);
 }, false);
+
+async function drop(e){
+    const memberID = e.dataTransfer.getData('text');
+    const memberElement = document.getElementById(memberID);
+    const elementPlace = e.path.length - 8;
+    e.path[elementPlace].childNodes[1].append(memberElement);
+    const workshopID = e.path[elementPlace].id;
+
+    await updateDraggedMember(memberID, workshopID);
+}
