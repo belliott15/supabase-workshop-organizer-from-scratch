@@ -32,8 +32,8 @@ window.addEventListener('load', async () =>{
 //drag and drop names into dropzones
 var dragged;
 
-document.addEventListener('drag', (e) => {
-
+document.addEventListener('drag', (e) => {  
+    e.preventDefault();
 }, false);
 
 document.addEventListener('dragstart', (e) => {
@@ -56,7 +56,7 @@ document.addEventListener('dragenter', (e) => {
 }, false);
 
 document.addEventListener('dragleave', (e) => {
-    if(e.target.className === 'dropzone') {
+    if (e.target.className === 'dropzone') {
         e.target.style.background = '';
     }
 }, false);
@@ -68,7 +68,7 @@ document.addEventListener('drop', async (e) => {
         dragged.parentNode.removeChild(dragged);
         e.target.appendChild(dragged);
     }
-    const elementPlace = e.path.length -7;
+    const elementPlace = e.path.length - 7;
     const memberId = e.dataTransfer.getData('text');
     const workshopID = e.path[elementPlace].id;
 
