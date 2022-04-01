@@ -13,7 +13,7 @@ body {
     --footer-height: 25px;
     
     font-family: Ubuntu Condensed, sans-serif;
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(107, 107, 107);
 }
 
 main {
@@ -35,9 +35,16 @@ section {
 header {
     display: flex;
     justify-content: flex-end;
-    background-color: #177077ff;
-    height: var(--header-height);
+    background: linear-gradient(-45deg, #4292a7 40%, rgba(0, 0, 0, 0) 70%), url(/assets/header\ image.png);
+    height: 100px;
     box-shadow: var(--shadow);
+}
+
+@media(min-width: 1250px){
+    header{
+        background: linear-gradient(-45deg, #4292a7 20%, rgba(0, 0, 0, 0) 70%, gray);
+        transition: 2s;
+    }
 }
 
 a{
@@ -143,7 +150,7 @@ footer {
 }
 
 #workshop-main section{
-    background-color: rgb(55, 131, 155);
+    background: linear-gradient(rgb(47, 108, 136) 20%, gray 90%);
     height: 100%;
     width: 95%;
     margin: 10px;
@@ -156,6 +163,7 @@ footer {
     justify-content: flex-start;
     align-items: flex-start;
     padding: 30px;
+    background: linear-gradient(40deg, rgb(47, 108, 136) 20%, gray 90%);
 }
 
 #left-side div{
@@ -168,9 +176,7 @@ footer {
 }
 
 #workshop-display{
-    overflow: scroll;
-    padding: 50px;
-    height: 750px;
+    flex-wrap: wrap;
 }
 
 .workshop{
