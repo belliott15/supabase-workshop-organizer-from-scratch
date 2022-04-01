@@ -11,6 +11,7 @@ export function renderWorkshop(workshop){
 
     workshopName.textContent = workshop.topic;
     workshopImg.src = workshop.img;
+    workshopImg.setAttribute('draggable', false);
 
 
     for (let member of workshop.workshop_members) {
@@ -19,7 +20,9 @@ export function renderWorkshop(workshop){
         memberName.textContent = `- ${member.first_name}`;
         memberName.href = `../edit/?id=${member.id}`;
         memberName.classList.add('member');
+        memberName.id = member.id,
         memberName.setAttribute('draggable', true);
+        memberName.setAttribute('ondragstart', "event.dataTransfer.setData('text/plain', null)");
 
         members.append(memberName);
     }
