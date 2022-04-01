@@ -45,7 +45,8 @@ window.addEventListener('load', async () =>{
 });
 
 //drag and drop names into dropzones
-var dragged;
+//eslint-disable-next-line
+let dragged;
 
 document.addEventListener('drag', (e) => {  
     e.preventDefault();
