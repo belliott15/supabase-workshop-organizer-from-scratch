@@ -24,6 +24,7 @@ formEl.addEventListener('submit', async (e) =>{
 
     await createMember(member);
     formEl.reset();
+    window.location.replace('../workshops');
 });
 
 window.addEventListener('load', async () =>{

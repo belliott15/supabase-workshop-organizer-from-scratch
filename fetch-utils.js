@@ -34,6 +34,27 @@ export async function createMember(member){
     return response.body;
 }
 
+export async function updateMember(member){
+    const response = await client
+        .from('workshop_members')
+        .update({
+            first_name: member.first_name, 
+            last_name: member.last_name,
+            workshop_id: member.workshop_id
+        })
+        .match({ user_id: member.user_id });
+
+    return response;
+}
+
+export async function deleteMember(id){
+    const response = await client 
+        .from('workshop_members')
+        .delete()
+        .match({ id: id });
+
+    return response;
+}
 
 export function getUser() {
     return client.auth.session() && client.auth.session().user;
