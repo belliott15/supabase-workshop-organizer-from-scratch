@@ -2,6 +2,7 @@ import { checkAuth, getWorkshop, logout, updateMember } from '../fetch-utils.js'
 import { renderWorkshop } from '../render-utils.js';
 
 const workshopEl = document.querySelector('#workshop-display');
+const searchBar = document.querySelector('#search-bar');
 
 checkAuth();
 
@@ -23,6 +24,19 @@ async function fetchAndDisplayWorkshops(){
     }
 }
 
+searchBar.addEventListener('input', async () => {
+    const userInput = searchBar.value;
+    const workshops = await getWorkshop(userInput);
+
+    workshopEl.textContent = '';
+
+    for (let workshop of workshops){
+        const workshopList = renderWorkshop(workshop);
+        workshopEl.append(workshopList);
+
+    }
+});
+
 window.addEventListener('load', async () =>{
     await getWorkshop();
 
@@ -37,6 +51,7 @@ document.addEventListener('drag', (e) => {
 }, false);
 
 document.addEventListener('dragstart', (e) => {
+    console.log(e);
     dragged = e.target;
     e.dataTransfer.setData('text', e.target.id);
 }, false);
@@ -68,9 +83,13 @@ document.addEventListener('drop', async (e) => {
         dragged.parentNode.removeChild(dragged);
         e.target.appendChild(dragged);
     }
-    const elementPlace = e.path.length - 7;
+    const elementPlace = e.path.length - 8;
     const memberId = e.dataTransfer.getData('text');
     const workshopID = e.path[elementPlace].id;
+    console.log(elementPlace);
+    const member = {
+        workshop_id: workshopID
+    };
 
-    await updateMember(workshopID, memberId);
+    await updateMember(memberId, member);
 }, false);

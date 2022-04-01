@@ -4,12 +4,20 @@ const SUPABASE_URL = 'https://cpwfuaqvwlzrtpauugot.supabase.co';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export async function getWorkshop(){
-    // console.log(client);
-    const response = await client
-        .from('workshops')
-        .select('*, workshop_members(*)');
-    return response.body;
+export async function getWorkshop(query){
+    if(!query){
+        const response = await client
+            .from('workshops')
+            .select('*, workshop_members(*)');
+        return response.body;
+    } else {
+        const response = await client
+            .from('workshops')
+            .select('*, workshop_members(*)')
+            .ilike('topic', `%${query}%`);
+        
+        return response.body;
+    }
 }
 
 export async function getMember(id){
