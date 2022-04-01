@@ -40,6 +40,18 @@ header {
     box-shadow: var(--shadow);
 }
 
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    margin: 10px;
+    border-bottom: white 2px solid;
+}
+
+a:hover{
+    color:#4F2667ff;
+}
+
 h2 {
     font-size: 1.8rem;
     font-weight: bold;
@@ -131,7 +143,7 @@ footer {
 }
 
 #workshop-main section{
-    background-color: #5DB1CBff;
+    background-color: rgb(55, 131, 155);
     height: 100%;
     width: 95%;
     margin: 10px;
@@ -167,7 +179,7 @@ footer {
     flex-direction: column;
     margin: 5px;
     border-radius: 5px;
-    background-color:#4F2667ff;
+    background-color: rgb(59, 59, 59);
     width: 100%;
 }
 
@@ -189,6 +201,7 @@ footer {
     color:#E3889Aff;
     margin: 10px;
     border-radius: 10px;
+    border: none;
 }
 
 .member:hover{

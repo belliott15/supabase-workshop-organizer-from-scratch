@@ -1,9 +1,11 @@
-import { deleteMember, getWorkshop, logout, updateMember } from '../fetch-utils.js';
+import { deleteMember, getMember, getWorkshop, logout, updateMember } from '../fetch-utils.js';
 
 const formEl = document.querySelector('form');
 const workshopDropdown = document.querySelector('select');
 const logoutButton = document.getElementById('logout');
 const deleteButton = document.querySelector('.delete-button');
+const firstNameInput = document.querySelector('#first-name-input');
+const lastNameInput = document.querySelector('#last-name-input');
 
 const params = new URLSearchParams(window.location.search);
 
@@ -25,15 +27,17 @@ formEl.addEventListener('submit', async (e) =>{
         workshop_id: workshopID
     };
 
-    await updateMember(member);
+    await updateMember(params.get('id'), member);
     formEl.reset();
-    location.window.replace('../workshops');
+    window.location.replace('../workshops');
 });
 
 window.addEventListener('load', async () =>{
     const workshops = await getWorkshop();
 
-
+    const member = await getMember(params.get('id'));
+    firstNameInput.value = member.first_name;
+    lastNameInput.value = member.last_name;
 
     for (let workshop of workshops){
         const option = document.createElement('option');
@@ -47,6 +51,6 @@ window.addEventListener('load', async () =>{
 
 deleteButton.addEventListener('click', async () =>{
     await deleteMember(params.get('id'));
-    location.window.replace('./workshops');
+    window.location.replace('../workshops');
 });
 

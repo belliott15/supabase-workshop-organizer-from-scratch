@@ -34,7 +34,7 @@ export async function createMember(member){
     return response.body;
 }
 
-export async function updateMember(member){
+export async function updateMember(id, member){
     const response = await client
         .from('workshop_members')
         .update({
@@ -42,7 +42,7 @@ export async function updateMember(member){
             last_name: member.last_name,
             workshop_id: member.workshop_id
         })
-        .match({ user_id: member.user_id });
+        .match({ id: id });
 
     return response;
 }
