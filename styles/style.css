@@ -215,6 +215,12 @@ footer {
     background-color: #177077ff;
 }
 
+.dropzone{
+    border: black solid 2px;
+    width: 100%;
+    height: 40px;
+}
+
 /* add and edit pages */
 
 #new-member{

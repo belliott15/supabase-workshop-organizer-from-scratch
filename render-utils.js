@@ -19,9 +19,11 @@ export function renderWorkshop(workshop){
         memberName.textContent = `- ${member.first_name}`;
         memberName.href = `../edit/?id=${member.id}`;
         memberName.classList.add('member');
+        memberName.setAttribute('draggable', true);
 
         members.append(memberName);
     }
+    members.classList.add('dropzone');
     workshopDiv.append(workshopName, workshopImg, members);
     workshopDiv.classList.add('workshop');
     
