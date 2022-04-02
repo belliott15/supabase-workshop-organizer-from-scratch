@@ -53,7 +53,6 @@ document.addEventListener('drag', (e) => {
 }, false);
 
 document.addEventListener('dragstart', (e) => {
-    console.log(e);
     dragged = e.target;
     e.dataTransfer.setData('text', e.target.id);
 }, false);
@@ -80,7 +79,9 @@ document.addEventListener('dragleave', (e) => {
 
 document.addEventListener('drop', async (e) => {
     e.preventDefault();
-
+    if (e.target.className === 'dropzone'){
+        e.target.style.background = 'transparent';
+    }
 }, false);
 
 async function drop(e){
@@ -91,4 +92,5 @@ async function drop(e){
     const workshopID = e.path[elementPlace].id;
 
     await updateDraggedMember(memberID, workshopID);
+    fetchAndDisplayWorkshops();
 }
