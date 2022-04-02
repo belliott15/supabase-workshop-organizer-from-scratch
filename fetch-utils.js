@@ -1,7 +1,81 @@
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNwd2Z1YXF2d2x6cnRwYXV1Z290Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDc5Njg3MTAsImV4cCI6MTk2MzU0NDcxMH0.sUI1TaJk5GE34Q06B2tduC38-RG8NO-HoqJhGa4wrhg';
+
+const SUPABASE_URL = 'https://cpwfuaqvwlzrtpauugot.supabase.co';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+export async function getWorkshop(query){
+    if (!query){
+        const response = await client
+            .from('workshops')
+            .select('*, workshop_members(*)');
+        return response.body;
+    } else {
+        const response = await client
+            .from('workshops')
+            .select('*, workshop_members(*)')
+            .ilike('topic', `%${query}%`);
+        
+        return response.body;
+    }
+}
+
+export async function getMember(id){
+    const response = await client   
+        .from('workshop_members')
+        .select('*')
+        .match({ id })
+        .single();
+
+    return response.body;
+}
+
+export async function createMember(member){
+    const response = await client
+        .from('workshop_members')
+        .insert({
+            first_name: member.first_name, 
+            last_name: member.last_name,
+            workshop_id: member.workshop_id
+        });
+
+    return response.body;
+}
+
+export async function updateMember(id, member){
+    const response = await client
+        .from('workshop_members')
+        .update({
+            first_name: member.first_name, 
+            last_name: member.last_name,
+            workshop_id: member.workshop_id
+        })
+        .match({ id: id });
+
+    return response;
+}
+
+export async function updateDraggedMember(id, workshop){
+    console.log(id, workshop);
+    const response = await client
+        .from('workshop_members')
+        .update({
+            workshop_id: Number(workshop)
+        })
+        .match({ id })
+        .single();
+
+    return response;
+}
+
+export async function deleteMember(id){
+    const response = await client 
+        .from('workshop_members')
+        .delete()
+        .match({ id: id });
+
+    return response;
+}
 
 export function getUser() {
     return client.auth.session() && client.auth.session().user;
@@ -15,7 +89,7 @@ export function checkAuth() {
 
 export function redirectIfLoggedIn() {
     if (getUser()) {
-        location.replace('./other-page');
+        location.replace('./workshops');
     }
 }
 

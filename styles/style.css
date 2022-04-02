@@ -1,25 +1,19 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
 body {
-    /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
-    /* --color1: hsla(349, 69%, 76%, 1);
-    --color2: hsla(207, 67%, 44%, 1);
-    --color3: hsla(200, 61%, 56%, 1);
-    --color4: hsla(187, 41%, 94%, 1);
-    --color5: hsla(170, 28%, 95%, 1); */
-
-    /* --color1: hsla(45, 86%, 83%, 1);
-    --color2: hsla(135, 65%, 98%, 1);
-    --color3: hsla(315, 37%, 86%, 1);
-    --color4: hsla(45, 73%, 98%, 1);
-    --color5: hsla(224, 40%, 79%, 1); */
+    --spanish-violet: #4F2667ff;
+    --maximum-blue: #5DB1CBff;
+    --ming: #177077ff;
+    --shimmering-blush: #E3889Aff;
+    --tyrian-purple: #5F0B3Dff;
     
     --header-height: 80px;
     --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
     --gutter: 30px;
     --footer-height: 25px;
     
-    font-family: 'Titillium Web', sans-serif;
-    background-color: var(--color2);
+    font-family: Ubuntu Condensed, sans-serif;
+    background-color: rgb(107, 107, 107);
 }
 
 main {
@@ -31,26 +25,38 @@ main {
 }
 
 section {
-    background-color: var(--color5);
-    width: 1000px;
-    max-width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: var(--gutter);
-    padding-bottom: var(--gutter);
-    margin-top: var(--gutter);
-    margin-bottom: var(--gutter);
-    border: solid 2px var(--color1);
+    border: solid 2px black;
 }
 
 header {
     display: flex;
     justify-content: flex-end;
-    background-color: var(--color3);
-    height: var(--header-height);
+    background: linear-gradient(-45deg, #4292a7 40%, rgba(0, 0, 0, 0) 70%), url(/assets/header\ image.png);
+    height: 100px;
     box-shadow: var(--shadow);
+}
+
+@media(min-width: 1250px){
+    header{
+        background: linear-gradient(-45deg, #4292a7 20%, rgba(0, 0, 0, 0) 70%, gray);
+        transition: 2s;
+    }
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    margin: 10px;
+    border-bottom: white 2px solid;
+}
+
+a:hover{
+    color:#4F2667ff;
 }
 
 h2 {
@@ -118,7 +124,10 @@ footer {
 }
 
 .auth-container {
-    margin: 10px;
+    margin: 30px 10px;
+    background-color: #177077ff;
+    padding: 20px;
+    border-radius: 5px;
 }
 
 .auth-container form {
@@ -129,3 +138,130 @@ footer {
 .auth-container button {
     margin: 10px;
 }
+
+/* Workshop Page CSS */
+
+#workshop-main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+}
+
+#workshop-main section{
+    background: linear-gradient(rgb(47, 108, 136) 20%, gray 90%);
+    height: 100%;
+    width: 95%;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#left-side{
+    height: 500px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 30px;
+    background: linear-gradient(40deg, rgb(47, 108, 136) 20%, gray 90%);
+}
+
+#left-side div{
+    margin: 10px;
+}
+
+#left-side h1{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+#workshop-display{
+    flex-wrap: wrap;
+}
+
+.workshop{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: rgb(59, 59, 59);
+    width: 100%;
+}
+
+.workshop h2{
+    margin: 5px auto;
+    color:rgb(44, 152, 160);
+    font-size: 35px;
+}
+
+.workshop img{
+    height: 150px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.member{
+    text-decoration: none;
+    font-size: 20px;
+    color:#E3889Aff;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.member:hover{
+    cursor: grab;
+    background-color: #177077ff;
+}
+
+.dropzone{
+    /* border: black solid 2px; */
+    width: 100%;
+    min-height: 50px;
+}
+
+/* add and edit pages */
+
+#new-member{
+    background-color: #177077ff;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#new-member form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+#new-member form input{
+    margin: 10px;
+    border-radius: 5px;
+    height: 25px;
+}
+
+#new-member form select{
+    margin: 10px;
+    border-radius: 5px;
+    height: 25px;
+}
+
+#new-member form button{
+    margin: 10px;
+    border-radius: 5px;
+    height: 25px;
+    width: 100px;
+    background-color:#4F2667ff;
+    color: white
+}
+
